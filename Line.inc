@@ -42,7 +42,8 @@ Float:		lin_rotY,
 Float:		lin_rotZ,
 
 			lin_world,
-			lin_interior
+			lin_interior,
+			lin_playerid
 }
 
 
@@ -59,11 +60,7 @@ Iterator:	lin_Index<MAX_LINE>;
 ==============================================================================*/
 
 
-stock CreateLineSegment(modelid, Float:objlength,
-	Float:PointX, Float:PointY, Float:PointZ,
-	Float:DestX, Float:DestY, Float:DestZ,
-	Float:RotX = 0.0, Float:RotY = 0.0, Float:RotZ = 0.0,
-	Float:objlengthoffset = 0.0, worldid = 0, interiorid = 0, Float:maxlength = 100.0)
+stock CreateLineSegment(modelid, Float:objlength, Float:PointX, Float:PointY, Float:PointZ, Float:DestX, Float:DestY, Float:DestZ, Float:RotX = 0.0, Float:RotY = 0.0, Float:RotZ = 0.0, Float:objlengthoffset = 0.0, worldid = -1, interiorid = -1, playerid = -1, Float:maxlength = 100.0)
 {
 	new id = Iter_Free(lin_Index);
 
@@ -92,6 +89,7 @@ stock CreateLineSegment(modelid, Float:objlength,
 
 	lin_Data[id][lin_world]				= worldid;
 	lin_Data[id][lin_interior]			= interiorid;
+	lin_Data[id][lin_playerid]			= playerid;
 
 	Iter_Add(lin_Index, id);
 
@@ -170,7 +168,7 @@ UpdateLineSegment(lineid)
 				rx + lin_Data[lineid][lin_rotX],
 				ry + lin_Data[lineid][lin_rotY],
 				-rz + lin_Data[lineid][lin_rotZ],
-				lin_Data[lineid][lin_world], lin_Data[lineid][lin_interior]);
+				lin_Data[lineid][lin_world], lin_Data[lineid][lin_interior], lin_Data[lineid][lin_playerid]);
 		}
 		else
 		{
@@ -460,6 +458,32 @@ stock SetLineSegmentInterior(lineid, interior)
 	{
 		if(IsValidDynamicObject(lin_Objects[lineid][i]))
 			Streamer_SetIntData(STREAMER_TYPE_OBJECT, lin_Objects[lineid][i], E_STREAMER_INTERIOR_ID, interior);
+	}
+
+	UpdateLineSegment(lineid);
+
+	return 1;
+}
+
+// lin_playerid
+stock GetLineSegmentPlayerID(lineid)
+{
+	if(!Iter_Contains(lin_Index, lineid))
+		return 0;
+
+	return lin_Data[lineid][lin_playerid];
+}
+stock SetLineSegmentPlayerID(lineid, playerid)
+{
+	if(!Iter_Contains(lin_Index, lineid))
+		return 0;
+
+	lin_Data[lineid][lin_playerid] = playerid;
+
+	for(new i; i < lin_Data[lineid][lin_objCount]; i++)
+	{
+		if(IsValidDynamicObject(lin_Objects[lineid][i]))
+			Streamer_SetIntData(STREAMER_TYPE_OBJECT, lin_Objects[lineid][i], E_STREAMER_PLAYER_ID, playerid);
 	}
 
 	UpdateLineSegment(lineid);
