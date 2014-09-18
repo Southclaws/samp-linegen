@@ -1,5 +1,7 @@
 # Line.inc
 
+[![Donate](https://www.paypalobjects.com/en_GB/i/btn/btn_donate_SM.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=M7WJU7YN8PKGQ) Support the development of this library by donating. I can put more time into adding new features!
+
 Generates a line of objects between start point and destination. Useful for ziplines, tunnels, police tape, funky infinite neon strips, etc.
 
 
