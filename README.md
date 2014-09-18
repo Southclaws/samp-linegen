@@ -10,7 +10,6 @@ Generates a line of objects between start point and destination. Useful for zipl
 # Dependencies
 
 - [YSI/y_iterate - Y_Less](http://github.com/Y-Less/YSI)
-- [YSI/y_timers - Y_Less](http://github.com/Y-Less/YSI)
 - [Streamer Plugin - Incognito](http://github.com/samp-incognito/samp-streamer-plugin)
 
 
