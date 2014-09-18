@@ -20,7 +20,7 @@ Generates a line of objects between start point and destination. Useful for zipl
 ## Constants
 
 - ```MAX_LINE```: Line segment creation limit.
-- ```LIN_MAX_OBJ```: Maximum number of objects per line segment.
+- ```MAX_OBJECTS_PER_LINE```: Maximum number of objects per line segment.
 - ```INVALID_LINE_SEGMENT_ID```: Invalid ID for use with validity checks.
 
 
