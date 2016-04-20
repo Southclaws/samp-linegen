@@ -4,11 +4,13 @@
 	Southclaw's Line Segment Generation Script v1.0.0
 
 		Generates a line of objects between start point and destination. Useful
-		for ziplines, tunnels, police tape, funky neon strips, etc.
+		for ziplines, tunnels, police tape, funky infinite neon strips, etc.
 
 		Dependencies:
 			y_iterate
 			streamer plugin
+
+		Do what you want with it, but keep my name on it :)
 
 
 ==============================================================================*/
@@ -48,7 +50,7 @@ Float:		lin_rotZ,
 static
 			lin_Data[MAX_LINE][E_LINE_DATA],
 			lin_Objects[MAX_LINE][MAX_OBJECTS_PER_LINE],
-Iterator:	lin_Index<MAX_LINE>;
+Iterator:   lin_Index<MAX_LINE>;
 
 
 /*==============================================================================
