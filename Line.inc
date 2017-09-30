@@ -93,7 +93,7 @@ stock CreateLineSegment(modelid, Float:objlength, Float:PointX, Float:PointY, Fl
 
 	Iter_Add(lin_Index, id);
 
-	UpdateLineSegment(id);
+	updateLineSegment(id);
 
 	return id;
 }
@@ -125,7 +125,7 @@ stock DestroyLineSegment(lineid)
 ==============================================================================*/
 
 
-UpdateLineSegment(lineid)
+stock updateLineSegment(lineid)
 {
 	new
 		Float:rx,
@@ -246,7 +246,7 @@ stock SetLineSegmentModel(lineid, modelid, Float:objlength, Float:objlengthoffse
 			Streamer_SetIntData(STREAMER_TYPE_OBJECT, lin_Objects[lineid][i], E_STREAMER_MODEL_ID, modelid);
 	}
 
-	UpdateLineSegment(lineid);
+	updateLineSegment(lineid);
 
 	return 1;
 }
@@ -314,7 +314,7 @@ stock SetLineSegmentMaxLength(lineid, Float:maxlength)
 
 	lin_Data[lineid][lin_maxLength] = maxlength;
 
-	UpdateLineSegment(lineid);
+	updateLineSegment(lineid);
 
 	return 1;
 }
@@ -331,7 +331,7 @@ stock GetLineSegmentPoint(lineid, &Float:PointX, &Float:PointY, &Float:PointZ)
 	PointY = lin_Data[lineid][lin_posY];
 	PointZ = lin_Data[lineid][lin_posZ];
 
-	UpdateLineSegment(lineid);
+	updateLineSegment(lineid);
 
 	return 1;
 }
@@ -345,7 +345,7 @@ stock SetLineSegmentPoint(lineid, Float:PointX, Float:PointY, Float:PointZ)
 	lin_Data[lineid][lin_posY] = PointY;
 	lin_Data[lineid][lin_posZ] = PointZ;
 
-	UpdateLineSegment(lineid);
+	updateLineSegment(lineid);
 
 	return 1;
 }
@@ -362,7 +362,7 @@ stock GetLineSegmentDest(lineid, &Float:DestX, &Float:DestY, &Float:DestZ)
 	DestY = lin_Data[lineid][lin_dstY];
 	DestZ = lin_Data[lineid][lin_dstZ];
 
-	UpdateLineSegment(lineid);
+	updateLineSegment(lineid);
 
 	return 1;
 }
@@ -376,7 +376,7 @@ stock SetLineSegmentDest(lineid, Float:DestX, Float:DestY, Float:DestZ)
 	lin_Data[lineid][lin_dstY] = DestY;
 	lin_Data[lineid][lin_dstZ] = DestZ;
 
-	UpdateLineSegment(lineid);
+	updateLineSegment(lineid);
 
 	return 1;
 }
@@ -393,7 +393,7 @@ stock GetLineSegmentModelAngles(lineid, &Float:RotX, &Float:RotY, &Float:RotZ)
 	RotY = lin_Data[lineid][lin_rotY];
 	RotZ = lin_Data[lineid][lin_rotZ];
 
-	UpdateLineSegment(lineid);
+	updateLineSegment(lineid);
 
 	return 1;
 }
@@ -407,7 +407,7 @@ stock SetLineSegmentModelAngles(lineid, Float:RotX, Float:RotY, Float:RotZ)
 	lin_Data[lineid][lin_rotY] = RotY;
 	lin_Data[lineid][lin_rotZ] = RotZ;
 
-	UpdateLineSegment(lineid);
+	updateLineSegment(lineid);
 
 	return 1;
 }
@@ -434,7 +434,7 @@ stock SetLineSegmentWorld(lineid, world)
 			Streamer_SetIntData(STREAMER_TYPE_OBJECT, lin_Objects[lineid][i], E_STREAMER_WORLD_ID, world);
 	}
 
-	UpdateLineSegment(lineid);
+	updateLineSegment(lineid);
 
 	return 1;
 }
@@ -460,7 +460,7 @@ stock SetLineSegmentInterior(lineid, interior)
 			Streamer_SetIntData(STREAMER_TYPE_OBJECT, lin_Objects[lineid][i], E_STREAMER_INTERIOR_ID, interior);
 	}
 
-	UpdateLineSegment(lineid);
+	updateLineSegment(lineid);
 
 	return 1;
 }
@@ -486,7 +486,7 @@ stock SetLineSegmentPlayerID(lineid, playerid)
 			Streamer_SetIntData(STREAMER_TYPE_OBJECT, lin_Objects[lineid][i], E_STREAMER_PLAYER_ID, playerid);
 	}
 
-	UpdateLineSegment(lineid);
+	updateLineSegment(lineid);
 
 	return 1;
 }
