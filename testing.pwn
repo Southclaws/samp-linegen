@@ -1,39 +1,15 @@
-#define FILTERSCRIPT
-
+#include "linegen.inc"
 
 #define RUN_TESTS
 
-
-#include <a_samp>
-
-#include <YSI\y_iterate>
-#include <YSI\y_timers>
-#include <streamer>
-#include <Line>
-
 #include <YSI\y_testing>
 
-
-
-public OnFilterScriptInit()
-{
-	new
-		tests,
-		fails,
-		func[33];
-
-	Testing_Run(tests, fails, func);
-
-	return 1;
-}
-
-Test:LineSegment()
-{
+Test:LineSegment() {
 	new lineid = CreateLineSegment(19087, 2.46, -9.2563, 54.6999, 11.1468, 8.9720, 15.1808, 6.7617,
 		90.0, 0.0, 0.0,
 		-(2.46/2), 1, 2, -1, 100.0);
 
-	ASSERT(IsValidLineSegment(lineid) == 1);
+	ASSERT(IsValidLineSegment(lineid));
 
 	ASSERT(GetLineSegmentModel(lineid) == 19087);
 	SetLineSegmentModel(lineid, 5737, 5.5, 8.8);

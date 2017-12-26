@@ -1,0 +1,13 @@
+{
+    "user": "Southclaws",
+    "repo": "samp-linegen",
+    "entry": "testing.pwn",
+    "output": "testing.amx",
+    "dependencies": [
+        "Southclaws/samp-stdlib",
+        "Southclaws/samp-logger",
+        "Zeex/amx_assembly",
+        "Misiur/YSI-Includes",
+        "samp-incognito/samp-streamer-plugin"
+    ]
+}
