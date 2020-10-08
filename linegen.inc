@@ -68,7 +68,6 @@ stock CreateLineSegment(
 	new id = Iter_Free(line_Index);
 
 	if(id == ITER_NONE) {
-		err("MAX_LINE_SEGMENT limit reached.");
 		return INVALID_LINE_SEGMENT_ID;
 	}
 	
