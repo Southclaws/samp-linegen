@@ -11,8 +11,8 @@
 
 #include <a_samp>
 #include <logger>
-#include <YSI\y_iterate>
-#include <YSI\y_timers>
+#include <YSI_Coding\y_iterate>
+#include <YSI_Coding\y_timers>
 #include <streamer>
 
 
