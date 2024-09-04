@@ -478,6 +478,10 @@ stock updateLineSegment(lineid) {
 
 	distToDest = floatsqroot( (vx*vx) + (vy*vy) + (vz*vz) );
 	count = floatround(distToDest / line_Data[lineid][line_objLength], floatround_ceil) + 1;
+	
+	if(count > MAX_OBJECTS_PER_LINE) {
+		count = MAX_OBJECTS_PER_LINE;
+	}
 
 	for(new i; i < count; i++) {
 		if(i == 0) {
@@ -530,7 +534,7 @@ stock updateLineSegment(lineid) {
 	}
 
 	if(count < line_Data[lineid][line_objCount]) {
-		for(new i = count; i < MAX_OBJECTS_PER_LINE; i++) {
+		for(new i = count; 0 <= i < MAX_OBJECTS_PER_LINE; i++) {
 			if(IsValidDynamicObject(line_Objects[lineid][i])) {
 				DestroyDynamicObject(line_Objects[lineid][i]);
 				line_Objects[lineid][i] = INVALID_OBJECT_ID;
