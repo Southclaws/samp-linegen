@@ -54,7 +54,7 @@ enum E_LINE_DATA {
 
 static
 	line_Data[MAX_LINE_SEGMENT][E_LINE_DATA],
-	line_Objects[MAX_LINE_SEGMENT][MAX_OBJECTS_PER_LINE],
+	STREAMER_TAG_OBJECT:line_Objects[MAX_LINE_SEGMENT][MAX_OBJECTS_PER_LINE],
 	Iterator:line_Index<MAX_LINE_SEGMENT>;
 
 stock CreateLineSegment(
@@ -107,7 +107,7 @@ stock DestroyLineSegment(lineid) {
 	for(new i; i < line_Data[lineid][line_objCount]; i++) {
 		if(IsValidDynamicObject(line_Objects[lineid][i])) {
 			DestroyDynamicObject(line_Objects[lineid][i]);
-			line_Objects[lineid][i] = INVALID_STREAMER_ID;
+			line_Objects[lineid][i] = STREAMER_TAG_OBJECT:INVALID_STREAMER_ID;
 		}
 	}
 
@@ -537,7 +537,7 @@ stock updateLineSegment(lineid) {
 		for(new i = count; 0 <= i < MAX_OBJECTS_PER_LINE; i++) {
 			if(IsValidDynamicObject(line_Objects[lineid][i])) {
 				DestroyDynamicObject(line_Objects[lineid][i]);
-				line_Objects[lineid][i] = INVALID_STREAMER_ID;
+				line_Objects[lineid][i] = STREAMER_TAG_OBJECT:INVALID_STREAMER_ID;
 			}
 		}
 	}
