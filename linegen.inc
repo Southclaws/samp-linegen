@@ -107,7 +107,7 @@ stock DestroyLineSegment(lineid) {
 	for(new i; i < line_Data[lineid][line_objCount]; i++) {
 		if(IsValidDynamicObject(line_Objects[lineid][i])) {
 			DestroyDynamicObject(line_Objects[lineid][i]);
-			line_Objects[lineid][i] = INVALID_OBJECT_ID;
+			line_Objects[lineid][i] = INVALID_STREAMER_ID;
 		}
 	}
 
@@ -537,7 +537,7 @@ stock updateLineSegment(lineid) {
 		for(new i = count; 0 <= i < MAX_OBJECTS_PER_LINE; i++) {
 			if(IsValidDynamicObject(line_Objects[lineid][i])) {
 				DestroyDynamicObject(line_Objects[lineid][i]);
-				line_Objects[lineid][i] = INVALID_OBJECT_ID;
+				line_Objects[lineid][i] = INVALID_STREAMER_ID;
 			}
 		}
 	}
