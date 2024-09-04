@@ -54,7 +54,7 @@ enum E_LINE_DATA {
 
 static
 	line_Data[MAX_LINE_SEGMENT][E_LINE_DATA],
-	line_Objects[MAX_LINE_SEGMENT][MAX_OBJECTS_PER_LINE],
+	STREAMER_TAG_OBJECT:line_Objects[MAX_LINE_SEGMENT][MAX_OBJECTS_PER_LINE],
 	Iterator:line_Index<MAX_LINE_SEGMENT>;
 
 stock CreateLineSegment(
@@ -107,7 +107,7 @@ stock DestroyLineSegment(lineid) {
 	for(new i; i < line_Data[lineid][line_objCount]; i++) {
 		if(IsValidDynamicObject(line_Objects[lineid][i])) {
 			DestroyDynamicObject(line_Objects[lineid][i]);
-			line_Objects[lineid][i] = INVALID_OBJECT_ID;
+			line_Objects[lineid][i] = STREAMER_TAG_OBJECT:INVALID_STREAMER_ID;
 		}
 	}
 
@@ -478,6 +478,10 @@ stock updateLineSegment(lineid) {
 
 	distToDest = floatsqroot( (vx*vx) + (vy*vy) + (vz*vz) );
 	count = floatround(distToDest / line_Data[lineid][line_objLength], floatround_ceil) + 1;
+	
+	if(count > MAX_OBJECTS_PER_LINE) {
+		count = MAX_OBJECTS_PER_LINE;
+	}
 
 	for(new i; i < count; i++) {
 		if(i == 0) {
@@ -530,10 +534,10 @@ stock updateLineSegment(lineid) {
 	}
 
 	if(count < line_Data[lineid][line_objCount]) {
-		for(new i = count; i < MAX_OBJECTS_PER_LINE; i++) {
+		for(new i = count; 0 <= i < MAX_OBJECTS_PER_LINE; i++) {
 			if(IsValidDynamicObject(line_Objects[lineid][i])) {
 				DestroyDynamicObject(line_Objects[lineid][i]);
-				line_Objects[lineid][i] = INVALID_OBJECT_ID;
+				line_Objects[lineid][i] = STREAMER_TAG_OBJECT:INVALID_STREAMER_ID;
 			}
 		}
 	}
